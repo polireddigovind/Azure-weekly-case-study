@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "weekly-pipeline-adf"
+		},
+		"adlslink_accountKey": {
+			"value": ""
+		},
+		"bronze_to_silver_to_gold_accessToken": {
+			"value": ""
+		},
+		"adlslink_properties_typeProperties_url": {
+			"value": "https://medallionadlsaccount.dfs.core.windows.net/"
+		},
+		"bronze_to_silver_to_gold_properties_typeProperties_existingClusterId": {
+			"value": "0913-134303-y8rcxrxr"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

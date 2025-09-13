@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "weekly-pipeline-adf"
+		},
+		"adlslink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adlslink'"
+		},
+		"bronze_to_silver_to_gold_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'bronze_to_silver_to_gold'"
+		},
+		"adlslink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://medallionadlsaccount.dfs.core.windows.net/"
+		},
+		"bronze_to_silver_to_gold_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0913-134303-y8rcxrxr"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "weekly-pipeline-adf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"adlslink_accountKey": {
+						"value": "[parameters('adlslink_accountKey')]"
+					},
+					"bronze_to_silver_to_gold_accessToken": {
+						"value": "[parameters('bronze_to_silver_to_gold_accessToken')]"
+					},
+					"adlslink_properties_typeProperties_url": {
+						"value": "[parameters('adlslink_properties_typeProperties_url')]"
+					},
+					"bronze_to_silver_to_gold_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('bronze_to_silver_to_gold_properties_typeProperties_existingClusterId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
