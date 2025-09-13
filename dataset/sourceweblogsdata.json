@@ -1,0 +1,39 @@
+{
+	"name": "sourceweblogsdata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "weblogs.json",
+				"fileSystem": "raw-data"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"SessionID": {
+					"type": "string"
+				},
+				"CustomerID": {
+					"type": "integer"
+				},
+				"Timestamp": {
+					"type": "string"
+				},
+				"PageVisited": {
+					"type": "string"
+				},
+				"DurationSeconds": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

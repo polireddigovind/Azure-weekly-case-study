@@ -1,0 +1,9 @@
+{
+	"name": "weekly-pipeline-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a15bc69b-ec1e-423b-8eb4-8d069835f4bf",
+		"tenantId": "477314c4-d0b3-42bd-9855-e5d52bf6a1aa"
+	}
+}
